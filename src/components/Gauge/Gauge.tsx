@@ -30,32 +30,32 @@ const Gauge = ({ likes, dislikes }: { likes: number; dislikes: number }) => {
   return (
     <section className="">
       <button
-        className={`rounded p-1 mx-4 ${
+        className={`min-w-24 rounded-xl rounded-r-none border-2 border-r-0 border-black p-2 ${
           liked
             ? "bg-gray-400 text-black cursor-not-allowed"
-            : "bg-yellow-200 text-black hover:bg-black hover:text-yellow-200"
+            : "text-black hover:bg-lime-400 hover:text-black"
         }`}
         type="button"
         onClick={handleLikes}
         disabled={liked}
       >
         {disliked ? "Liked" : "Like"}
+        <br />
+        {numberOfLikes}
       </button>
       <button
-        className={`rounded p-1 mx-4 ${
+        className={`min-w-24 rounded-xl rounded-l-none border-2 border-l border-black p-2 ${
           disliked
             ? "bg-gray-400 text-black cursor-not-allowed"
-            : "bg-yellow-200 text-black hover:bg-black hover:text-yellow-200"
+            : "text-black hover:bg-red-500 hover:text-white"
         }`}
         type="button"
         onClick={handleDislikes}
         disabled={disliked}
       >
-        {liked ? "Disliked" : "Dislike"}
-      </button>
-      <br />
-      <p>Likes: {numberOfLikes}</p>
-      <p>Dislikes: {numberOfDislikes}</p>
+        {liked  ? "Disliked " : "Dislike "}
+        <br />
+        {numberOfLikes}      </button>
     </section>
   );
 };
