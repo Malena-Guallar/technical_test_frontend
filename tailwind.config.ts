@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -9,10 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "cinema": "url('https://c8.alamy.com/compfr/cr90ap/theatre-d-epoque-avec-des-neons-a-sacramento-californie-cr90ap.jpg')"
+        'field': "url('https://images.pexels.com/photos/13672305/pexels-photo-13672305.jpeg')",
+      },
+      fontFamily: {
+        italiana: ['var(--font-italiana)', 'serif'],
       },
     },
   },
   plugins: [],
 };
+
 export default config;

@@ -1,8 +1,15 @@
+import Head from "next/head";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "../public/globals.css";
+import { Inter, Italiana } from "next/font/google";
+import "@/public/globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const italiana = Italiana({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-italiana",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +23,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Italiana:wght@400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <body className={`${italiana.variable} ${inter.className} bg-field bg-cover min-h-screen`}>
+        {children}
+      </body>
     </html>
   );
 }

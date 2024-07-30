@@ -30,11 +30,14 @@ const Gauge = ({ likes, dislikes }: { likes: number; dislikes: number }) => {
   return (
     <section className="">
       <button
-        className={`min-w-24 rounded-xl rounded-r-none border-2 border-r-0 border-black p-2 ${
-          liked
-            ? "bg-gray-400 text-black cursor-not-allowed"
-            : "text-black hover:bg-lime-400 hover:text-black"
-        }`}
+        className={clsx(
+          "min-w-24 rounded-xl rounded-r-none border-2 border-r border-black p-2",
+          {
+            "bg-white text-black hover:bg-lime-400 hover:text-black": !liked && !disliked,
+            "bg-gray-200 border-gray-200 text-gray-500 cursor-not-allowed": !disliked && liked,
+            "bg-white text-green-500 border-green-500 hover:bg-lime-400": !liked && disliked,
+          }
+        )}
         type="button"
         onClick={handleLikes}
         disabled={liked}
@@ -44,18 +47,22 @@ const Gauge = ({ likes, dislikes }: { likes: number; dislikes: number }) => {
         {numberOfLikes}
       </button>
       <button
-        className={`min-w-24 rounded-xl rounded-l-none border-2 border-l border-black p-2 ${
-          disliked
-            ? "bg-gray-400 text-black cursor-not-allowed"
-            : "text-black hover:bg-red-500 hover:text-white"
-        }`}
+        className={clsx(
+          "min-w-24 rounded-xl rounded-l-none border-2 border-l border-black p-2",
+          {
+            "bg-white text-black hover:bg-red-500 hover:text-white": !disliked && !liked,
+            "bg-gray-200 border-gray-200 text-gray-500 cursor-not-allowed": !liked && disliked,
+            "bg-white text-red-500 border-red-500": !disliked && liked,
+          }
+        )}
         type="button"
         onClick={handleDislikes}
         disabled={disliked}
       >
-        {liked  ? "Disliked " : "Dislike "}
+        {liked ? "Disliked " : "Dislike "}
         <br />
-        {numberOfLikes}      </button>
+        {numberOfDislikes}{" "}
+      </button>
     </section>
   );
 };
