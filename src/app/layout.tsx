@@ -29,7 +29,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </Head>
-      <body className={`${italiana.variable} ${inter.className} bg-night  min-h-screen`}>
+      <body className={`${italiana.variable} ${inter.className} bg-night min-h-screen`}>
         {children}
       </body>
     </html>

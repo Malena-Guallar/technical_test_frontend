@@ -9,6 +9,8 @@ const Home = () => {
   const [selectedCategories, setSelectedCategories] = useState<Set<string>>(
     new Set()
   );
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(4);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -33,6 +35,28 @@ const Home = () => {
       selectedCategories.size === 0 || selectedCategories.has(movie.category)
   );
 
+  const numberOfPages = Math.ceil(filteredMovies.length / itemsPerPage);
+
+  const handleItemsPerPage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setItemsPerPage(parseInt(e.target.value, 10));
+    setCurrentPage(1);
+  };
+  const goToPreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const goToNextPage = () => {
+    if (currentPage < numberOfPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedMovies = filteredMovies.slice(startIndex, endIndex);
+
   return (
     <body>
       <main className="flex flex-col">
@@ -45,7 +69,7 @@ const Home = () => {
         {modal ? (
           <section className="flex justify-center align-middle mt-32">
             <button
-              className="font-italiana text-lime-400 text-2xl lg:text-4xl"
+              className="font-italiana text-lime-400 text-2xl lg:text-4xl underline"
               onClick={toggleModal}
             >
               &gt; browse movies
@@ -73,14 +97,40 @@ const Home = () => {
                   </li>
                 ))}
               </ul>
+
+              <div className="text-lime-400">
+                <label htmlFor="itemsPerPage">Items per page</label>
+                <select
+                  id="itemsPerPage"
+                  value={itemsPerPage}
+                  onChange={handleItemsPerPage}
+                >
+                  <option value={4}>4</option>
+                  <option value={8}>8</option>
+                  <option value={8}>12</option>
+                </select>
+              </div>
             </div>
+
             <ul className="lg:grid lg:grid-cols-2 mt-5">
-              {filteredMovies.map((movie, index) => (
+              {paginatedMovies.map((movie, index) => (
                 <li key={index} className="relative mb-4">
                   <Movie {...movie} id={`movie-${index}`} />
                 </li>
               ))}
             </ul>
+
+            <div className="text-lime-400">
+              <button onClick={goToPreviousPage} disabled={currentPage === 1}>
+                Previous
+              </button>
+              <button
+                onClick={goToNextPage}
+                disabled={currentPage === numberOfPages}
+              >
+                Next
+              </button>
+            </div>
           </section>
         )}
       </main>

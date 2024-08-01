@@ -15,6 +15,7 @@ const Gauge = ({ likes, dislikes }: { likes: number; dislikes: number }) => {
       setLikes(numberOfLikes - 1);
       setDisliked(false);
     }
+    console.log('liké')
   };
 
   const handleDislikes = () => {
@@ -25,6 +26,7 @@ const Gauge = ({ likes, dislikes }: { likes: number; dislikes: number }) => {
       setDislikes(numberOfDislikes - 1);
       setLiked(false);
     }
+    console.log('unliké')
   };
 
   return (
