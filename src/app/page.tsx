@@ -1,8 +1,8 @@
 "use client";
 
-import { movies } from "@/app/data/movies";
+import { movies as initialMovies } from "@/app/data/movies";
 import Movie from "@/components/Movie/Movie";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Home = () => {
   const [modal, setModal] = useState<boolean>(true);
@@ -11,6 +11,7 @@ const Home = () => {
   );
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number>(4);
+  const [movies, setMovies] = useState<any[]>(initialMovies)
 
   const toggleModal = () => {
     setModal(!modal);
@@ -56,6 +57,35 @@ const Home = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const paginatedMovies = filteredMovies.slice(startIndex, endIndex);
+
+  // useEffect(() => {
+  //   const listOfMovies = paginatedMovies.map((movie) => {
+  //     const storedLikes = localStorage.getItem(`${movie.id}-likes`);
+  //     const storedDislikes = localStorage.getItem(`${movie.id}-dislikes`);
+  //     return {
+  //       ...movie,
+  //       likes: storedLikes !== null ? parseInt(storedLikes, 10) : movie.likes,
+  //       dislikes: storedDislikes !== null ? parseInt(storedDislikes, 10) : movie.dislikes
+  //     };
+  //   })
+  //     setMovies(listOfMovies); 
+  // }, []);
+
+  useEffect(() => {
+    const updatedMovies = initialMovies.map((movie) => {
+      const storedLikes = localStorage.getItem(`${movie.id}-likes`);
+      const storedDislikes = localStorage.getItem(`${movie.id}-dislikes`);
+      return {
+        ...movie,
+        likes: storedLikes !== null ? parseInt(storedLikes, 10) : movie.likes,
+        dislikes:
+          storedDislikes !== null
+            ? parseInt(storedDislikes, 10)
+            : movie.dislikes,
+      };
+    });
+    setMovies(updatedMovies);
+  }, []);
 
   return (
     <body>

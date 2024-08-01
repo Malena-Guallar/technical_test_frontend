@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 
-const Gauge = ({ likes, dislikes }: { likes: number; dislikes: number }) => {
+const Gauge = ({ id, likes, dislikes }: { id: string; likes: number; dislikes: number }) => {
   const [liked, setLiked] = useState<boolean>(false);
   const [disliked, setDisliked] = useState<boolean>(false);
   const [numberOfLikes, setLikes] = useState<number>(likes);
@@ -15,7 +15,7 @@ const Gauge = ({ likes, dislikes }: { likes: number; dislikes: number }) => {
       setLikes(numberOfLikes - 1);
       setDisliked(false);
     }
-    console.log('liké')
+
   };
 
   const handleDislikes = () => {
@@ -26,8 +26,12 @@ const Gauge = ({ likes, dislikes }: { likes: number; dislikes: number }) => {
       setDislikes(numberOfDislikes - 1);
       setLiked(false);
     }
-    console.log('unliké')
   };
+
+  useEffect(() => {
+    localStorage.setItem(`${id}-likes`, numberOfLikes.toString());
+    localStorage.setItem(`${id}-dislikes`, numberOfDislikes.toString());
+  }, [id, numberOfLikes, numberOfDislikes]);
 
   return (
     <section className="">

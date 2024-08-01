@@ -30,7 +30,7 @@ const Movie = ({
             {title}
           </h2>
           <p>{category}</p>
-          <Gauge likes={likes} dislikes={dislikes}/>
+          <Gauge id={id} likes={likes} dislikes={dislikes}/>
         </div>
       </section>
   );
