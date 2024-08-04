@@ -1,5 +1,18 @@
-import { Card, CardActions, Typography, Button, CardContent, Badge, IconButton } from "@mui/material";
-import { ThumbUp, ThumbDown } from "@mui/icons-material";
+import {
+  Card,
+  CardActions,
+  Typography,
+  Button,
+  CardContent,
+  Badge,
+  IconButton,
+} from "@mui/material";
+import {
+  ThumbUp,
+  ThumbDown,
+  ThumbUpAltOutlined,
+  ThumbDownOffAltOutlined,
+} from "@mui/icons-material";
 
 const MovieCard = ({
   title,
@@ -30,14 +43,42 @@ const MovieCard = ({
       </CardContent>
       <CardActions>
         <Badge badgeContent={likes} color="success">
-          <IconButton onClick={onToggleLike} disabled={disliked} color="success">
+          {liked ? (
+          <IconButton
+            onClick={onToggleLike}
+            disabled={disliked}
+            color="success"
+          >
             <ThumbUp />
           </IconButton>
+        ) : (
+          <IconButton
+          onClick={onToggleLike}
+          disabled={disliked}
+          color="success"
+        >
+          <ThumbUpAltOutlined />
+        </IconButton>
+        )}
         </Badge>
         <Badge badgeContent={dislikes} color="warning">
-          <IconButton onClick={onToggleDislike} disabled={liked} color="warning">
-            <ThumbDown/>
-          </IconButton>
+          {disliked ? (
+            <IconButton
+              onClick={onToggleDislike}
+              disabled={liked}
+              color="warning"
+            >
+              <ThumbDown />
+            </IconButton>
+          ) : (
+            <IconButton
+              onClick={onToggleDislike}
+              disabled={liked}
+              color="warning"
+            >
+              <ThumbDownOffAltOutlined />
+            </IconButton>
+          )}
         </Badge>
       </CardActions>
       <CardActions>
