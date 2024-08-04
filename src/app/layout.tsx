@@ -2,6 +2,7 @@ import Head from "next/head";
 import type { Metadata } from "next";
 import { Inter, Italiana } from "next/font/google";
 import "@/public/globals.css";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,8 +30,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </Head>
-      <body className={`${italiana.variable} ${inter.className} bg-night min-h-screen`}>
-        {children}
+      <body
+        className={`${italiana.variable} ${inter.className} min-h-screen`}
+      >
+        <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
       </body>
     </html>
   );
