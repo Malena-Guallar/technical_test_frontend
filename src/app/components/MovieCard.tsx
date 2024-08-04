@@ -38,7 +38,7 @@ const MovieCard = ({
   return (
     <Card>
       <CardContent>
-        <Typography>{title}</Typography>
+        <Typography className="font-red">{title}</Typography>
         <Typography>{category}</Typography>
       </CardContent>
       <CardActions>

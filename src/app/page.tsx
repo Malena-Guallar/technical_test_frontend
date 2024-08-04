@@ -1,94 +1,15 @@
 "use client";
 
-// import { movies as initialMovies } from "@/app/data/movies";
-// import Movie from "@/components/Movie/Movie";
-// import { useState, useEffect } from "react";
-
-import MovieList from "@/components/MovieList";
+import MovieList from "./components/MovieList";
 
 const Home = () => {
 
   return (
-    <>
-      <h1>Movie Night</h1>
+    <section className="">
+      <h1 className="font-italiana text-6xl lg:text-8xl text-lime-400 tracking-[-.075em]">Movie Night</h1>
       <MovieList />
-    </>
+    </section>
   )
-  // const [modal, setModal] = useState<boolean>(true);
-  // const [selectedCategories, setSelectedCategories] = useState<Set<string>>(
-  //   new Set()
-  // );
-  // const [currentPage, setCurrentPage] = useState<number>(1);
-  // const [itemsPerPage, setItemsPerPage] = useState<number>(4);
-  // const [movies, setMovies] = useState<any[]>(initialMovies)
-
-  // const [storedLikes, setStoredLikes] = useState<any>();
-  // const [storedDislikes, setStoredDislikes] = useState<any>();
-
-  // useEffect(() => {
-  //   const updatedMovies = initialMovies.map((movie) => {
-  //     const storedLikes = localStorage.getItem(`${movie.id}-likes`);
-  //     setStoredLikes(storedLikes)
-  //     const storedDislikes = localStorage.getItem(`${movie.id}-dislikes`);
-  //     setStoredDislikes(storedDislikes)
-  //     return {
-  //       ...movie,
-  //       likes: storedLikes !== null ? parseInt(storedLikes, 10) : movie.likes,
-  //       dislikes:
-  //         storedDislikes !== null
-  //           ? parseInt(storedDislikes, 10)
-  //           : movie.dislikes,
-  //     };
-  //   });
-  //   setMovies(updatedMovies);
-  //   console.log('movies avec likes', updatedMovies)
-  // }, [storedLikes, storedDislikes]);
-
-  // const toggleModal = () => {
-  //   setModal(!modal);
-  // };
-
-  // const categories = Array.from(new Set(movies.map((movie) => movie.category)));
-
-  // const filterCategories = (category: string) => {
-  //   setSelectedCategories((prev) => {
-  //     const newCategories = new Set(prev);
-  //     if (newCategories.has(category)) {
-  //       newCategories.delete(category);
-  //     } else {
-  //       newCategories.add(category);
-  //     }
-  //     return newCategories;
-  //   });
-  // };
-
-  // const filteredMovies = movies.filter(
-  //   (movie) =>
-  //     selectedCategories.size === 0 || selectedCategories.has(movie.category)
-  // );
-
-  // const numberOfPages = Math.ceil(filteredMovies.length / itemsPerPage);
-
-  // const handleItemsPerPage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-  //   setItemsPerPage(parseInt(e.target.value, 10));
-  //   setCurrentPage(1);
-  // };
-
-  // const goToPreviousPage = () => {
-  //   if (currentPage > 1) {
-  //     setCurrentPage(currentPage - 1);
-  //   }
-  // };
-
-  // const goToNextPage = () => {
-  //   if (currentPage < numberOfPages) {
-  //     setCurrentPage(currentPage + 1);
-  //   }
-  // };
-
-  // const startIndex = (currentPage - 1) * itemsPerPage;
-  // const endIndex = startIndex + itemsPerPage;
-  // const paginatedMovies = filteredMovies.slice(startIndex, endIndex);
 
 
   // return (

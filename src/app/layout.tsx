@@ -1,8 +1,9 @@
 import Head from "next/head";
 import type { Metadata } from "next";
 import { Inter, Italiana } from "next/font/google";
-import "@/public/globals.css";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import "./globals.css";
+import { theme } from "../app/theme/theme";
+import { ThemeProvider, CssBaseline } from "@mui/material";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,22 +20,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Italiana:wght@400&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-      <body
-        className={`${italiana.variable} ${inter.className} min-h-screen`}
-      >
-        <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
-      </body>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <body className={`${italiana.variable} ${inter.className} bg-night min-h-screen`}>
+          {children}
+        </body>
+      </ThemeProvider>
     </html>
   );
 }
