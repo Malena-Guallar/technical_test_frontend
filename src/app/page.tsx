@@ -1,16 +1,21 @@
 "use client";
 
 import MovieList from "./components/MovieList";
+import title from "../../public/images/title.svg";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 const Home = () => {
-
   return (
     <section className="">
-      <h1 className="font-italiana text-6xl lg:text-8xl text-lime-400 tracking-[-.075em]">Movie Night</h1>
+      <motion.div initial={{ y: 500, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ ease: "easeOut", duration: 0.5 }} className="m-4"> 
+        <Image src={title} alt="Movie night" layout="responsive"/>
+      </motion.div>
       <MovieList />
     </section>
-  )
+  );
 
+  // f3f1e9
 
   // return (
   //   <body>

@@ -15,6 +15,9 @@ const config: Config = {
       fontFamily: {
         italiana: ['var(--font-italiana)', 'serif'],
       },
+      fontSize: {
+        "13xl" : "13rem",
+      }
     },
   },
   plugins: [],

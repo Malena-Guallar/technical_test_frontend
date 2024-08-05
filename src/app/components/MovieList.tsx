@@ -13,7 +13,7 @@ interface Movie {
   dislikes: number;
 }
 
-const MovieList = () => {
+const MovieList = ({ className } : { className?: string; }) => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -118,9 +118,9 @@ const MovieList = () => {
         selectedCategories={selectedCategories}
         onChange={handleCategoryChange}
       />
-      <Grid container spacing={3}>
+      <Grid container spacing={3} className="flex flex-wrap justify-center pt-0">
         {currentMovies.map((movie) => (
-          <Grid item key={movie.id}>
+          <Grid item key={movie.id} className="pt-0">
             <MovieCard
               {...movie}
               likes={likes[movie.id] || 0}
@@ -130,6 +130,7 @@ const MovieList = () => {
               liked={liked[movie.id] || false}
               disliked={disliked[movie.id] || false}
               onDeleteMovie={() => handleMovieDelete(movie.id)}
+              className="pt-0"
             />
           </Grid>
         ))}

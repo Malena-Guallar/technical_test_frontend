@@ -1,6 +1,5 @@
-import Head from "next/head";
 import type { Metadata } from "next";
-import { Inter, Italiana } from "next/font/google";
+import { Inter, Italiana, Poppins } from "next/font/google";
 import "./globals.css";
 import { theme } from "../app/theme/theme";
 import { ThemeProvider, CssBaseline } from "@mui/material";
@@ -27,7 +26,9 @@ export default function RootLayout({
     <html lang="en">
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <body className={`${italiana.variable} ${inter.className} bg-night min-h-screen`}>
+        <body
+          className={`${italiana.variable} ${inter.className} bg-night`}
+        >
           {children}
         </body>
       </ThemeProvider>

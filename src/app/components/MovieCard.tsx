@@ -1,30 +1,11 @@
-import {
-  Card,
-  CardActions,
-  Typography,
-  Button,
-  CardContent,
-  Badge,
-  IconButton,
-} from "@mui/material";
-import {
-  ThumbUp,
-  ThumbDown,
-  ThumbUpAltOutlined,
-  ThumbDownOffAltOutlined,
-} from "@mui/icons-material";
+import { Card, CardActions, Typography, Button, CardContent, Badge, IconButton } from "@mui/material";
+import { ThumbUp, ThumbDown, ThumbUpAltOutlined, ThumbDownOffAltOutlined } from "@mui/icons-material";
 
-const MovieCard = ({
-  title,
-  category,
-  likes,
-  dislikes,
-  onToggleLike,
-  onToggleDislike,
-  liked,
-  disliked,
-  onDeleteMovie,
-}: {
+import clsx from "clsx";
+
+const MovieCard = ({ className, title, category, likes, dislikes, onToggleLike, onToggleDislike, liked, disliked, onDeleteMovie,
+} : {
+  className?: string;
   title: string;
   category: string;
   likes: number;
@@ -36,30 +17,30 @@ const MovieCard = ({
   onDeleteMovie: () => void;
 }) => {
   return (
-    <Card>
-      <CardContent>
+    <Card className={clsx(className, "w-60 flex flex-col items-center")}>
+      <CardContent className="flex flex-col items-center">
         <Typography className="font-red">{title}</Typography>
         <Typography>{category}</Typography>
       </CardContent>
-      <CardActions>
+      <CardActions className="flex w-32 place-items-start">
         <Badge badgeContent={likes} color="success">
           {liked ? (
-          <IconButton
-            onClick={onToggleLike}
-            disabled={disliked}
-            color="success"
-          >
-            <ThumbUp />
-          </IconButton>
-        ) : (
-          <IconButton
-          onClick={onToggleLike}
-          disabled={disliked}
-          color="success"
-        >
-          <ThumbUpAltOutlined />
-        </IconButton>
-        )}
+            <IconButton
+              onClick={onToggleLike}
+              disabled={disliked}
+              color="success"
+            >
+              <ThumbUp />
+            </IconButton>
+          ) : (
+            <IconButton
+              onClick={onToggleLike}
+              disabled={disliked}
+              color="success"
+            >
+              <ThumbUpAltOutlined />
+            </IconButton>
+          )}
         </Badge>
         <Badge badgeContent={dislikes} color="warning">
           {disliked ? (
