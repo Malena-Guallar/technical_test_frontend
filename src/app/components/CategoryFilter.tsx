@@ -1,4 +1,4 @@
-import { Chip, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { Chip, FormControl } from "@mui/material";
 
 const CategoryFilter = ({
   categories,
@@ -9,34 +9,26 @@ const CategoryFilter = ({
   selectedCategories: string[];
   onChange: (selectedCategories: string[]) => void;
 }) => {
-  const handleChange = (event: SelectChangeEvent<string[]>) => {
-    const { value } = event.target
-    onChange(Array.isArray(value) ? value : []);
+  const handleToggle = (category: string) => {
+    const newSelectedCategories = selectedCategories.includes(category)
+      ? selectedCategories.filter((c) => c !== category)
+      : [...selectedCategories, category];
+    onChange(newSelectedCategories);
   };
 
-
   return (
-    <FormControl className="w-3/4 border-2 border-solid border-blue-300 flex flex-col justify-center content-center">
-      <InputLabel id="category-filter-label">Categories</InputLabel>
-      <Select
-        labelId="category-filter-label"
-        value={selectedCategories}
-        multiple
-        onChange={handleChange}
-        renderValue={(selectedCategories) => (
-          <div>
-            {selectedCategories.map((category) => (
-              <Chip key={category} label={category} />
-            ))}
-          </div>
-        )}
-      >
+    <FormControl className="w-1/2 my-5 md:my-10 text-black">
+      <div>
         {categories.map((category) => (
-          <MenuItem key={category} value={category}>
-            {category}
-          </MenuItem>
+          <Chip
+            key={category}
+            label={category}
+            clickable
+            onClick={() => handleToggle(category)}
+            style={{ margin: 4 }}
+          />
         ))}
-      </Select>
+      </div>
     </FormControl>
   );
 };

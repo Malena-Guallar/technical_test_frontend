@@ -13,7 +13,5 @@ const poppins = Poppins({
 export const theme = createTheme({
   palette: {
   },
-  typography: {
-    fontFamily: poppins.style.fontFamily
-  }
+
 });

@@ -17,18 +17,17 @@ const MovieCard = ({ className, title, category, likes, dislikes, onToggleLike, 
   onDeleteMovie: () => void;
 }) => {
   return (
-    <Card className={clsx(className, "w-60 flex flex-col items-center")}>
+    <Card className={clsx(className, "w-72 flex flex-col items-center bg-green border-solid border-[0.5px] rounded-none shadow-none text-black ")}>
       <CardContent className="flex flex-col items-center">
-        <Typography className="font-red">{title}</Typography>
-        <Typography>{category}</Typography>
+        <Typography className="font-bold text-2xl">{title}</Typography>
+        <Typography className="mt-2 text-sm">{category}</Typography>
       </CardContent>
       <CardActions className="flex w-32 place-items-start">
-        <Badge badgeContent={likes} color="success">
+        <Badge badgeContent={likes}>
           {liked ? (
             <IconButton
               onClick={onToggleLike}
               disabled={disliked}
-              color="success"
             >
               <ThumbUp />
             </IconButton>
@@ -36,18 +35,16 @@ const MovieCard = ({ className, title, category, likes, dislikes, onToggleLike, 
             <IconButton
               onClick={onToggleLike}
               disabled={disliked}
-              color="success"
             >
               <ThumbUpAltOutlined />
             </IconButton>
           )}
         </Badge>
-        <Badge badgeContent={dislikes} color="warning">
+        <Badge badgeContent={dislikes}>
           {disliked ? (
             <IconButton
               onClick={onToggleDislike}
               disabled={liked}
-              color="warning"
             >
               <ThumbDown />
             </IconButton>
@@ -55,7 +52,6 @@ const MovieCard = ({ className, title, category, likes, dislikes, onToggleLike, 
             <IconButton
               onClick={onToggleDislike}
               disabled={liked}
-              color="warning"
             >
               <ThumbDownOffAltOutlined />
             </IconButton>
@@ -63,7 +59,7 @@ const MovieCard = ({ className, title, category, likes, dislikes, onToggleLike, 
         </Badge>
       </CardActions>
       <CardActions>
-        <Button onClick={onDeleteMovie}>Delete</Button>
+        <Button onClick={onDeleteMovie}>&#91;delete&#93;</Button>
       </CardActions>
     </Card>
   );

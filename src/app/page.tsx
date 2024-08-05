@@ -7,16 +7,16 @@ import { motion } from "framer-motion";
 
 const Home = () => {
   return (
-    <section className="bg-green my-10 mx-5 rounded-3xl">
-      <motion.div initial={{ y: 500, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ ease: "easeOut", duration: 0.5 }} className="mx-5 md:mx-10"> 
-        <Image src={title} alt="Movie night" layout="responsive" className="mt-5 md:mt-10"/>
+    <section className="bg-green flex flex-col">
+      <motion.div initial={{ y: 500, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ ease: "easeOut", duration: 0.8 }} className="mx-5 md:mx-0 mt-5 md:mt-10 md:order-last" > 
+        <Image src={title} alt="Movie night" layout="responsive" />
       </motion.div>
       <MovieList />
     </section>
   );
 
   // e1f672
-  // 020202
+  // 02020
 
   // return (
   //   <body>

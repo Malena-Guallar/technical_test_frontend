@@ -1,4 +1,10 @@
-import { Button, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import {
+  Button,
+  Chip,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
 
 const Pagination = ({
   onPageChange,
@@ -22,34 +28,47 @@ const Pagination = ({
     }
   };
 
-  const handleItemsPerPageChange = (event: SelectChangeEvent<number>) => {
-    onItemsPerPageChange(Number(event.target.value));
+  const handleToggle = (value: number ) => {
+    onItemsPerPageChange(value);
   };
 
+  const itemsPerPageValues: number[] = [4, 8, 12];
+
   return (
-    <>
+    <section className="flex flex-col justify-center my-5 md:my-8 text-black">
       <div>
         <Button
           onClick={() => handlePageChange("prev")}
           disabled={currentPage === 1}
+          className="text-black font-semibold"
         >
           Previous
         </Button>
         <Button
           onClick={() => handlePageChange("next")}
           disabled={currentPage === totalPages}
+          className="text-black font-semibold"
         >
           Next
         </Button>
       </div>
-      <div>
-        <Select value={itemsPerPage} onChange={handleItemsPerPageChange}>
+      <div className="flex flex-col justify-center">
+        {itemsPerPageValues.map((value) => (
+          <Chip
+            key={value}
+            label={value}
+            clickable
+            onClick={() => handleToggle(value)}
+            style={{ margin: 4 }}
+          />
+        ))}
+        {/* <Select value={itemsPerPage} onChange={handleItemsPerPageChange}>
           <MenuItem value={4}>4</MenuItem>
           <MenuItem value={8}>8</MenuItem>
           <MenuItem value={12}>12</MenuItem>
-        </Select>
+        </Select> */}
       </div>
-    </>
+    </section>
   );
 };
 

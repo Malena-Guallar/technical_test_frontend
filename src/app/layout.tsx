@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Italiana, Poppins } from "next/font/google";
+import { Inter, Italiana } from "next/font/google";
 import "./globals.css";
 import { theme } from "../app/theme/theme";
 import { ThemeProvider, CssBaseline } from "@mui/material";
@@ -27,7 +27,7 @@ export default function RootLayout({
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <body
-          className={`${italiana.variable} ${inter.className} bg-black inline`}
+          className={`${italiana.variable} ${inter.className} bg-green inline text-black`}
         >
           {children}
         </body>

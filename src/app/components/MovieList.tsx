@@ -13,7 +13,7 @@ interface Movie {
   dislikes: number;
 }
 
-const MovieList = ({ className } : { className?: string; }) => {
+const MovieList = ({ className }: { className?: string }) => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -94,15 +94,15 @@ const MovieList = ({ className } : { className?: string; }) => {
       [id]: !prevDislikes[id],
     }));
   };
-  
+
   const filteredMovies =
-  selectedCategories.length > 0
-  ? movies.filter((movie) => selectedCategories.includes(movie.category))
-  : movies;
-  
+    selectedCategories.length > 0
+      ? movies.filter((movie) => selectedCategories.includes(movie.category))
+      : movies;
+
   const handleMovieDelete = (id: string) => {
-    setMovies(movies.filter(movie => movie.id !== id))
-  }
+    setMovies(movies.filter((movie) => movie.id !== id));
+  };
 
   const indexOfLastMovie = currentPage * moviesPerPage;
   const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
@@ -112,14 +112,19 @@ const MovieList = ({ className } : { className?: string; }) => {
   );
 
   return (
-    <section className="flex flex-col justify-center content-center border-2 border-solid border-pink-300">
-      <CategoryFilter
-        categories={categories}
-        selectedCategories={selectedCategories}
-        onChange={handleCategoryChange}
-      
-      />
-      <Grid container spacing={3} className="flex flex-wrap justify-center pt-0">
+    <section>
+      <div className="flex justify-center">
+        <CategoryFilter
+          categories={categories}
+          selectedCategories={selectedCategories}
+          onChange={handleCategoryChange}
+        />
+      </div>
+      <Grid
+        container
+        spacing={3}
+        className="flex flex-wrap justify-center pt-0"
+      >
         {currentMovies.map((movie) => (
           <Grid item key={movie.id} className="pt-0">
             <MovieCard
@@ -130,20 +135,19 @@ const MovieList = ({ className } : { className?: string; }) => {
               onToggleDislike={() => handleMovieDislike(movie.id)}
               liked={liked[movie.id] || false}
               disliked={disliked[movie.id] || false}
-              onDeleteMovie={() => handleMovieDelete(movie.id)}
-              className="pt-0"
-            />
+              onDeleteMovie={() => handleMovieDelete(movie.id)}            />
           </Grid>
         ))}
       </Grid>
-
-      <Pagination
-        onPageChange={handlePageChange}
-        currentPage={currentPage}
-        itemsPerPage={moviesPerPage}
-        totalItems={filteredMovies.length}
-        onItemsPerPageChange={handleMoviesPerPageChange}
-      />
+      <div className="flex justify-center">
+        <Pagination
+          onPageChange={handlePageChange}
+          currentPage={currentPage}
+          itemsPerPage={moviesPerPage}
+          totalItems={filteredMovies.length}
+          onItemsPerPageChange={handleMoviesPerPageChange}
+        />
+      </div>
     </section>
   );
 };
