@@ -17,6 +17,10 @@ const config: Config = {
       },
       fontSize: {
         "13xl" : "13rem",
+      },
+      colors: {
+        "black": "#020202",
+        "green": "#e1f672",
       }
     },
   },

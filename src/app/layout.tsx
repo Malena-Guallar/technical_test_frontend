@@ -27,7 +27,7 @@ export default function RootLayout({
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <body
-          className={`${italiana.variable} ${inter.className} bg-night`}
+          className={`${italiana.variable} ${inter.className} bg-black inline`}
         >
           {children}
         </body>

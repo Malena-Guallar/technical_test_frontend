@@ -16,7 +16,7 @@ const CategoryFilter = ({
 
 
   return (
-    <FormControl>
+    <FormControl className="w-3/4 border-2 border-solid border-blue-300 flex flex-col justify-center content-center">
       <InputLabel id="category-filter-label">Categories</InputLabel>
       <Select
         labelId="category-filter-label"

@@ -112,11 +112,12 @@ const MovieList = ({ className } : { className?: string; }) => {
   );
 
   return (
-    <section>
+    <section className="flex flex-col justify-center content-center border-2 border-solid border-pink-300">
       <CategoryFilter
         categories={categories}
         selectedCategories={selectedCategories}
         onChange={handleCategoryChange}
+      
       />
       <Grid container spacing={3} className="flex flex-wrap justify-center pt-0">
         {currentMovies.map((movie) => (
