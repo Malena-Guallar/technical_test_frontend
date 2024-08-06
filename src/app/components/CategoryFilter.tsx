@@ -1,4 +1,4 @@
-import { Chip, FormControl } from "@mui/material";
+import { Chip, FormControl, Typography } from "@mui/material";
 
 const CategoryFilter = ({
   categories,
@@ -17,15 +17,16 @@ const CategoryFilter = ({
   };
 
   return (
-    <FormControl className="w-1/2 my-5 md:my-10 text-black">
-      <div>
+    <FormControl className="my-5 md:my-10 text-black">
+      {/* <Typography>browse by categories</Typography> */}
+      <div className="">
         {categories.map((category) => (
           <Chip
             key={category}
             label={category}
             clickable
             onClick={() => handleToggle(category)}
-            style={{ margin: 4 }}
+            className="my-2 md:my-0 mx-2 md:mx-10 md:w-32 hover:bg-transparent hover:border-2 hover:border-black hover:border-solid hover:font-bold active:bg-black"
           />
         ))}
       </div>
