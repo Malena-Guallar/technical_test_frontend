@@ -8,9 +8,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        italiana: ['var(--font-italiana)', 'serif'],
-      },
       colors: {
         "black": "#020202",
         "white": "#fbfff2",
