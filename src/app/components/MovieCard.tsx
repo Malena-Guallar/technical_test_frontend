@@ -17,12 +17,12 @@ const MovieCard = ({ className, title, category, likes, dislikes, onToggleLike, 
   onDeleteMovie: () => void;
 }) => {
   return (
-    <Card className={clsx(className, "w-72 flex flex-col items-center bg-green border-solid border-[0.5px] rounded-none shadow-none text-black ")}>
-      <CardContent className="flex flex-col items-center">
+    <Card className={clsx(className, "w-72 flex flex-col items-center md:items-start bg-green shadow-none text-black")}>
+      <CardContent className="flex flex-col items-center md:items-start">
         <Typography className="font-bold text-2xl">{title}</Typography>
-        <Typography className="mt-2 text-sm">{category}</Typography>
+        <Typography className="mt-2 text-sm">➪ {category}</Typography>
       </CardContent>
-      <CardActions className="flex w-32 place-items-start">
+      <CardActions className="flex w-32 md:m-0 ml-4">
         <Badge badgeContent={likes}>
           {liked ? (
             <IconButton
@@ -58,7 +58,7 @@ const MovieCard = ({ className, title, category, likes, dislikes, onToggleLike, 
           )}
         </Badge>
       </CardActions>
-      <CardActions>
+      <CardActions className="m-0">
         <Button onClick={onDeleteMovie}>&#91;delete&#93;</Button>
       </CardActions>
     </Card>

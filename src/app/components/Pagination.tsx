@@ -52,7 +52,7 @@ const Pagination = ({
           Next
         </Button>
       </div>
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col md:flex-row justify-center">
         {itemsPerPageValues.map((value) => (
           <Chip
             key={value}

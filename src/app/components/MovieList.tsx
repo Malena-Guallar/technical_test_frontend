@@ -126,7 +126,7 @@ const MovieList = ({ className }: { className?: string }) => {
         className="flex flex-wrap justify-center pt-0"
       >
         {currentMovies.map((movie) => (
-          <Grid item key={movie.id} className="pt-0">
+          <Grid item key={movie.id} className="flex flex-col justify-center pt-0">
             <MovieCard
               {...movie}
               likes={likes[movie.id] || 0}
