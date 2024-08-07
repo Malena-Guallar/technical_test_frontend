@@ -11,12 +11,9 @@ const config: Config = {
       fontFamily: {
         italiana: ['var(--font-italiana)', 'serif'],
       },
-      fontSize: {
-        "13xl" : "13rem",
-      },
       colors: {
         "black": "#020202",
-        "green": "#fbfff2",
+        "white": "#fbfff2",
       }
     },
   },

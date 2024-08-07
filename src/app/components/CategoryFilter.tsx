@@ -17,16 +17,16 @@ const CategoryFilter = ({
   };
 
   return (
-    <FormControl className="my-5 md:my-10 text-black">
-      {/* <Typography>browse by categories</Typography> */}
-      <div className="">
+    <FormControl className="my-5 md:my-5 text-black flex items-center">
+      <Typography className="text-sm italic mb-3 md:mb-6">browse by categories :</Typography>
+      <div className="flex items-center">
         {categories.map((category) => (
           <Chip
             key={category}
             label={category}
             clickable
             onClick={() => handleToggle(category)}
-            className="my-2 md:my-0 mx-2 md:mx-10 md:w-32 hover:bg-transparent hover:border-2 hover:border-black hover:border-solid hover:font-bold active:bg-black"
+            className="mx-2 md:mx-10 md:w-32"
           />
         ))}
       </div>

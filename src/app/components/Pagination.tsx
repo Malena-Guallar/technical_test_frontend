@@ -1,10 +1,4 @@
-import {
-  Button,
-  Chip,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from "@mui/material";
+import { Button, Chip, Typography } from "@mui/material";
 
 const Pagination = ({
   onPageChange,
@@ -28,14 +22,14 @@ const Pagination = ({
     }
   };
 
-  const handleToggle = (value: number ) => {
+  const handleToggle = (value: number) => {
     onItemsPerPageChange(value);
   };
 
   const itemsPerPageValues: number[] = [4, 8, 12];
 
   return (
-    <section className="flex flex-col justify-center my-5 md:my-8 text-black">
+    <section className="flex flex-col justify-center items-center my-5 md:my-6 text-black">
       <div>
         <Button
           onClick={() => handlePageChange("prev")}
@@ -52,21 +46,17 @@ const Pagination = ({
           Next
         </Button>
       </div>
-      <div className="flex flex-col md:flex-row justify-center">
+      <Typography className="text-xs italic my-2">items per page :</Typography>
+      <div className="flex justify-center">
         {itemsPerPageValues.map((value) => (
           <Chip
             key={value}
             label={value}
             clickable
             onClick={() => handleToggle(value)}
-            style={{ margin: 4 }}
+            style={{ margin: 12 }}
           />
         ))}
-        {/* <Select value={itemsPerPage} onChange={handleItemsPerPageChange}>
-          <MenuItem value={4}>4</MenuItem>
-          <MenuItem value={8}>8</MenuItem>
-          <MenuItem value={12}>12</MenuItem>
-        </Select> */}
       </div>
     </section>
   );
